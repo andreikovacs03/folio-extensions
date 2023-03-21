@@ -1,6 +1,6 @@
 import urllib.parse
 from libgen_api import LibgenSearch
-from flask import Blueprint
+from flask import Blueprint, request
 
 blueprint = Blueprint("libgen", __name__, url_prefix="/libgen")
 
@@ -9,6 +9,13 @@ blueprint = Blueprint("libgen", __name__, url_prefix="/libgen")
 def search_title(title: str):
     s = LibgenSearch()
     return s.search_title(title)
+
+
+@blueprint.route("/search_title_filtered/<title>", methods=["POST"])
+def search_title_filtered(title: str):
+    s = LibgenSearch()
+    filters = request.get_json()
+    return s.search_title_filtered(title, filters, exact_match=True)
 
 
 @blueprint.route("/download/<link>")
