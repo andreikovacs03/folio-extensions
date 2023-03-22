@@ -18,8 +18,9 @@ def search_title_filtered(title: str):
     return s.search_title_filtered(title, filters, exact_match=True)
 
 
-@blueprint.route("/download/<link>")
-def download(link: str):
+@blueprint.route("/download/", methods=["POST"])
+def download():
+    link = request.form["link"]
     s = LibgenSearch()
     decoded_link = urllib.parse.unquote(link)
     return s.resolve_download_links({"Mirror_1": decoded_link})
