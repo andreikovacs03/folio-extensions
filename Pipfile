@@ -5,13 +5,20 @@ name = "pypi"
 
 [packages]
 flask = "==2.2.2"
-libgen-api = "*"
 flask-cors = "*"
+bs4 = "*"
+requests = "*"
+twine = "*"
+wheel = "*"
+lxml = "*"
+black = "*"
+libgen-api = "*"
 
 [dev-packages]
 mypy = "*"
 black = "*"
 pylint-flask = "*"
+types-requests = "*"
 
 [requires]
 python_version = "3.11"
